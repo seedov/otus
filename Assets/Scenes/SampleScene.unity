@@ -647,7 +647,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1828132873}
-  - component: {fileID: 1828132872}
+  - component: {fileID: 1828132874}
   m_Layer: 0
   m_Name: Installers
   m_TagString: Untagged
@@ -655,23 +655,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1828132872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828132871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e1ccd1041fb3704c8a8472a3e35a5ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameStateSwitcher: {fileID: 1199987225}
-  _userInput: {fileID: 1973958329}
-  _cameraFollower: {fileID: 963194229}
-  _gameStateLogger: {fileID: 1185240561}
-  _player: {fileID: 726334418}
 --- !u!4 &1828132873
 Transform:
   m_ObjectHideFlags: 0
@@ -687,6 +670,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1828132874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828132871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5643906f870b445bdd9510accfe280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentReference:
+    TypeName: 
+  autoRun: 1
+  autoInjectGameObjects: []
+  _gameStateSwitcher: {fileID: 1199987225}
+  _userInput: {fileID: 1973958329}
+  _cameraFollower: {fileID: 963194229}
+  _gameStateLogger: {fileID: 1185240561}
+  _player: {fileID: 726334418}
 --- !u!1 &1973958328
 GameObject:
   m_ObjectHideFlags: 0
