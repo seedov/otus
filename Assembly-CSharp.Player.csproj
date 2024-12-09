@@ -67,6 +67,8 @@
     <Compile Include="Assets\Scripts\Logger\GameStateLogger.cs" />
     <Compile Include="Assets\Scripts\UserInput\KeyboardInput.cs" />
     <Compile Include="Assets\Scripts\FSM\GameStateFsm.cs" />
+    <Compile Include="Assets\Scripts\DI\VContainerGameInstaller.cs" />
+    <Compile Include="Assets\Scripts\GameControllers\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -847,6 +849,10 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="VContainer">
+      <HintPath>Library\ScriptAssemblies\VContainer.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
