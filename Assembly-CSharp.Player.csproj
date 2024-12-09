@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Logger\GameStateLogger.cs" />
     <Compile Include="Assets\Scripts\UserInput\KeyboardInput.cs" />
     <Compile Include="Assets\Scripts\FSM\GameStateFsm.cs" />
+    <Compile Include="Assets\Scripts\GameControllers\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
