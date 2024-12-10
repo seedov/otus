@@ -19,6 +19,7 @@ namespace Lessons.Architecture.GameSystem
 
 
     public class GameStateFsm : 
+        IDisposable,
         IObserver<GameEvent>, //Мы являмся слушателями игровых событий
         IObservable<GameState>//Мы являемся еще и продюсерами именения игрового состояния. Т.е. на нас можно подписаться
     {
@@ -26,6 +27,16 @@ namespace Lessons.Architecture.GameSystem
 
         private GameState _gameState;
         public GameState CurrentState => _gameState;
+
+        private List<IDisposable> _subscriptions = new();
+
+        public GameStateFsm(IObservable<GameEvent>[] gameStateSources)
+        {
+            foreach (var source in gameStateSources)
+            {
+                _subscriptions.Add(source.Subscribe(this));
+            }
+        }
 
         public void OnCompleted()
         {
@@ -68,6 +79,15 @@ namespace Lessons.Architecture.GameSystem
             _gameStateObservers.Add(observer);
             observer.OnNext(_gameState);
             return new Unsubscriber<GameState>(_gameStateObservers, observer);
+        }
+
+        public void Dispose()
+        {
+            foreach(var subsciption in _subscriptions)
+            {
+                subsciption.Dispose();
+            }
+            _subscriptions.Clear();
         }
     }
 }

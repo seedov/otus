@@ -3,19 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollower : MonoBehaviour, IObserver<IPlayerPosition>
+public class CameraFollower : MonoBehaviourObserver<IPlayerPosition>
 {
     [SerializeField]
     private Vector3 _offset;
-    public void OnCompleted()
-    {
-    }
 
-    public void OnError(Exception error)
-    {
-    }
 
-    public void OnNext(IPlayerPosition playerPosition)
+    public override void OnNext(IPlayerPosition playerPosition)
     {
         transform.position = playerPosition.Position + _offset;
     }

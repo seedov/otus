@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +6,7 @@ namespace Lessons.Architecture.GameSystem
 {
     public class GameInstaller : MonoBehaviour
     {
-        private List<IDisposable> _disposables = new();
-        private GameStateFsm _gameState = new();
+        private GameStateFsm _gameState;
 
         [SerializeField]
         private GameStateSwithcer _gameStateSwitcher;
@@ -25,28 +24,18 @@ namespace Lessons.Architecture.GameSystem
         private Player _player;
 
         private void Awake()
-        {           
-
-            //подписываем gameState на gameStateSwitcher
-            //т.е. gameState теперь будет получать уведомления от gameStateSwitcher
-            _disposables.Add(_gameStateSwitcher.Subscribe(_gameState));
-
-            _disposables.Add(_gameState.Subscribe(_userInput));
-            _disposables.Add(_gameState.Subscribe(_gameStateLogger));
-
-            _disposables.Add(_userInput.Subscribe(_player));
-
-
-            _disposables.Add(_player.Subscribe(_cameraFollower));
-
-        }
-
-
-
-        private void OnDestroy()
         {
-            foreach (var disposable in _disposables) { disposable.Dispose(); }
-            _disposables.Clear();
+            _gameState = new GameStateFsm(new[]{ _gameStateSwitcher });
+
+            _userInput.Initialize(new[] { _gameState });
+
+            _gameStateLogger.Initialize(new[] { _gameState });
+
+            _player.Initialize(new[] { _userInput });
+
+            _cameraFollower.Initialize(new[] { _player });
+
         }
+
     }
 }

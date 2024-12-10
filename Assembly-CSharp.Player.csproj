@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\DI\GameInstaller.cs" />
     <Compile Include="Assets\Scripts\observable.core\Unsubscriber.cs" />
     <Compile Include="Assets\Scripts\GameControllers\GameStateSwithcer.cs" />
+    <Compile Include="Assets\Scripts\observable.core\MonoBehaviourObserver.cs" />
     <Compile Include="Assets\Scripts\Logger\GameStateLogger.cs" />
     <Compile Include="Assets\Scripts\UserInput\KeyboardInput.cs" />
     <Compile Include="Assets\Scripts\FSM\GameStateFsm.cs" />

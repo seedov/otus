@@ -12,11 +12,12 @@ public struct GameInput
     }
 }
 
-public class KeyboardInput : MonoBehaviour, IObservable<GameInput>, IObserver<GameState>
+public class KeyboardInput : MonoBehaviourObserver<GameState>, IObservable<GameInput>
 {
     private List<IObserver<GameInput>> _userInputObservers = new();
 
     private bool _canProcessUserInput = false;
+
 
     public IDisposable Subscribe(IObserver<GameInput> observer)
     {
@@ -57,15 +58,7 @@ public class KeyboardInput : MonoBehaviour, IObservable<GameInput>, IObserver<Ga
 
     }
 
-    public void OnCompleted()
-    {
-    }
-
-    public void OnError(Exception error)
-    {
-    }
-
-    public void OnNext(GameState value)
+    public override void OnNext(GameState value)
     {
         _canProcessUserInput = value == GameState.Play;
     }

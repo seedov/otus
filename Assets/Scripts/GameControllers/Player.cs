@@ -9,7 +9,7 @@ public interface IPlayerPosition
     public Vector3 Position { get; }
 }
 
-public class Player : MonoBehaviour , IPlayerPosition, IObserver<GameInput>, IObservable<IPlayerPosition>
+public class Player : MonoBehaviourObserver<GameInput> , IPlayerPosition, IObservable<IPlayerPosition>
 {
     [SerializeField]
     private float speed = 2.5f;
@@ -18,15 +18,7 @@ public class Player : MonoBehaviour , IPlayerPosition, IObserver<GameInput>, IOb
 
     public Vector3 Position => transform.position;
 
-    public void OnCompleted()
-    {
-    }
-
-    public void OnError(Exception error)
-    {
-    }
-
-    public void OnNext(GameInput value)
+    public override void OnNext(GameInput value)
     {
         this.transform.position += value.Input * this.speed;
         NotifyObserverrs();
